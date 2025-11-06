@@ -1,10 +1,7 @@
+import { API_KEY, BASE_URL, PATH_GOLD } from "@/config";
 import { GoldBrand, GoldType } from "@/enums";
 import { GoldTypeMapping } from "@/mappings/goldType.mapping";
 import { GoldPrice, SJCPrice } from "@/types/gold.interface";
-
-
-const API_URL = "https://vapi.vnappmob.com/api/v2/gold";
-const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjE5MjIwNjcsImlhdCI6MTc2MDYyNjA2Nywic2NvcGUiOiJnb2xkIiwicGVybWlzc2lvbiI6MH0.b8sPNog6p9XymEuvch699bi-3E8XKl3I4tV8_1Y-ZWc";
 
 interface IResponse {
     results: SJCPrice[];
@@ -15,7 +12,7 @@ interface IProps{
 }
 
 export async function fetchGoldPrice({type}:IProps): Promise<{date:string, data:GoldPrice[]}> {
-    const response = await fetch(`${API_URL}/${type}`, {
+    const response = await fetch(`${BASE_URL}/${PATH_GOLD}/${type}`, {
         headers: {
             Authorization: `Bearer ${API_KEY}`
         }
