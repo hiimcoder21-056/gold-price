@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Typography } from 'antd';
 import GoldPriceTable from '@/components/GoldPriceTable';
 import { fetchGoldPrice } from '@/services/gold.service';
 import { GoldPrice } from '@/types/gold.interface';
+import { Card, Typography } from 'antd';
+import { useEffect, useState } from 'react';
 
-import dayjs from "dayjs"
 import { GoldBrand } from '@/enums';
+import dayjs from "dayjs";
+import { requestNewApiKey } from '@/services/apikey.service';
 
 const { Title } = Typography;
 
@@ -22,10 +23,15 @@ export default function HomePage() {
         setLoading(false);
     };
 
+    // useEffect(() => {
+    //     loadData();
+    //     const interval = setInterval(loadData, 60000);
+    //     return () => clearInterval(interval);
+    // }, []);
+
     useEffect(() => {
         loadData();
-        const interval = setInterval(loadData, 60000);
-        return () => clearInterval(interval);
+        requestNewApiKey();
     }, []);
 
     return (
