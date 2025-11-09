@@ -32,13 +32,13 @@ export default function HomePage() {
     useEffect(() => {
         loadData();
         requestNewApiKey();
+        console.log("BASE_URL =", process.env.REACT_APP_BASE_URL);
     }, []);
 
     return (
         <Card>
             <Title level={4}>Bảng giá vàng SJC - Cập nhật: {dayjs(Number(updatedTime)*1000).format('DD/MM/YYYY - HH:mm:ss')} </Title>
             <GoldPriceTable data={data} loading={loading} />
-
         </Card>
     );
 }
