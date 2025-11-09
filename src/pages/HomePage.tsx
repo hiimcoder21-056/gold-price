@@ -32,7 +32,6 @@ export default function HomePage() {
     useEffect(() => {
         loadData();
         requestNewApiKey();
-        console.log("BASE_URL =", process.env.REACT_APP_BASE_URL);
     }, []);
 
     return (
