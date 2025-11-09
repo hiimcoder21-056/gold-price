@@ -18,16 +18,14 @@ export async function fetchGoldPrice({type}:IProps): Promise<{date:string, data:
         }
     });
     const responseJson: IResponse = await response.json();
+    const sjcPrice: SJCPrice = responseJson?.results[0];
 
-    const sjcPrice: SJCPrice = responseJson.results[0];
-
-    console.log('sjcPrice: ', sjcPrice)
 
     const goldTypeList = Object.values(GoldType);
     const result: GoldPrice[] = goldTypeList.map(goldType => {
-        console.log('buy_${goldType}: ', `buy_${goldType}`)
         return {
             type: GoldTypeMapping[goldType].name,
+            // eslint-disable-next-line no-template-curly-in-string
             buyPrice: sjcPrice[`buy_${goldType}` as keyof SJCPrice],
             sellPrice: sjcPrice[`sell_${goldType}` as keyof SJCPrice],
             unit: '1 lượng'
