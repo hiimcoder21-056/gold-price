@@ -38,7 +38,6 @@ export default function HomePage() {
         <Card>
             <Title level={4}>Bảng giá vàng SJC - Cập nhật: {dayjs(Number(updatedTime)*1000).format('DD/MM/YYYY - HH:mm:ss')} </Title>
             <GoldPriceTable data={data} loading={loading} />
-
         </Card>
     );
 }

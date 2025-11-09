@@ -9,7 +9,7 @@ export async function requestNewApiKey(): Promise<string> {
     const apiKey = data?.results;
     if (!apiKey) throw new Error("Không lấy được API key");
 
-    // updateEnvKey("NEXT_PUBLIC_API_KEY", apiKey);
+    // updateEnvKey("REACT_APP_API_KEY", apiKey);
 
     console.log(`[${new Date().toISOString()}] ✅ Lấy lại API key mới`);
     return apiKey;
